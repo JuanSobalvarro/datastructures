@@ -8,12 +8,8 @@
 
 int main()
 {
-    // Person & Date general "object"
-    Person person;
-    Date date;
-
-    Person *juan = person.createPerson("Juan", date.createDate(23, 8, 2004));
-    Person *esther = person.createPerson("Esther", date.createDate(12, 2, 2005));
+    Person *juan = createPerson("Juan", createDate(23, 8, 2004));
+    Person *esther = createPerson("Esther", createDate(12, 2, 2005));
 
     Person *people[2] = {juan, esther};
 

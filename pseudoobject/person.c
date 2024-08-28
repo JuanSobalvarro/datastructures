@@ -2,7 +2,7 @@
 
 static size_t _days_per_month[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
-Date *_create_date(size_t day, size_t month, size_t year)
+Date *createDate(size_t day, size_t month, size_t year)
 {
     if (year < 0)
     {
@@ -34,12 +34,10 @@ Date *_create_date(size_t day, size_t month, size_t year)
     date->month = month;
     date->year = year;
 
-    date->createDate = &_create_date;
-
     return date;
 }
 
-Person *_create_person(char name[20], Date *date)
+Person *createPerson(char *name, Date *date)
 {
     Person *person = malloc(sizeof(Person));
 
@@ -54,7 +52,6 @@ Person *_create_person(char name[20], Date *date)
 
     // Assign methods
     person->age = &_calculate_age;
-    person->createPerson = &_create_person;
 
     return person;
 }
