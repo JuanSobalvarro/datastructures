@@ -1,4 +1,4 @@
-#include "linkedlist.h"
+#include "singlylinkedlist.h"
 
 // PRIVATE FUNCTIONS
 
@@ -17,16 +17,14 @@ node *createNode(int val)
     return n;
 }
 
-void insertat(struct linkedlist *ll, int val, int pos)
+void insertat(struct singlyLinkedList *ll, int val, int pos)
 {
     if (pos < 0)
     {
-        printf("Position not valid\n");
         return;
     }
     else if (pos > ll->len)
     {
-        printf("Position not valid inserting at the end\n");
         pos = ll->len;
     }
     else if (pos == 0)
@@ -52,7 +50,7 @@ void insertat(struct linkedlist *ll, int val, int pos)
     ll->len++;
 }
 
-void deleteat(struct linkedlist *ll, int pos)
+void deleteat(struct singlyLinkedList *ll, int pos)
 {
     if (pos < 0)
     {
@@ -87,7 +85,7 @@ void deleteat(struct linkedlist *ll, int pos)
     ll->len--;
 }
 
-void print(struct linkedlist *ll)
+void print(struct singlyLinkedList *ll)
 {
     node *temp = ll->head;
     while (temp != NULL)
@@ -98,7 +96,7 @@ void print(struct linkedlist *ll)
     printf("\n");
 }   
 
-void freell(struct linkedlist *ll)
+void freell(struct singlyLinkedList *ll)
 {
     while (ll->head->next != NULL)
     {
@@ -110,9 +108,9 @@ void freell(struct linkedlist *ll)
     free(ll->self);
 }
 
-linkedlist LinkedList()
+singlyLinkedList createSinglyLinkedList()
 {
-    linkedlist *ll = malloc(sizeof(linkedlist));
+    singlyLinkedList *ll = malloc(sizeof(singlyLinkedList));
     
     ll->self = ll;
 
