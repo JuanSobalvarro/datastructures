@@ -1,4 +1,5 @@
 /**
+ * This is the queue implementation with linked list. IT IS NOT THE IMPLEMENTATION AS AN ARRAY
  * USAGE:
  * The queue structure operates as a "pseudo class",
  * allowing you to work with queues similarly to classes in other languages.
@@ -24,6 +25,7 @@
 #define QUEUE_H
 
 #include <stdlib.h>
+#include <stdbool.h>
 #include <stdio.h>
 
 typedef struct queuenode
@@ -39,11 +41,14 @@ typedef struct queue
     struct queuenode *rear;
     int len;
 
-    void (*enqueue)(struct queue*, int);
-    void (*dequeue)(struct queue*);
-    void (*print)(struct queue*);
+    int (*peek)(struct queue* self);
+    void (*enqueue)(struct queue* self, int);
+    void (*dequeue)(struct queue* self);
+    void (*print)(struct queue* self);
 
-    void (*free)(struct queue*);
+    bool (*isEmpty)(struct queue* self);
+
+    void (*free)(struct queue* self);
 } queue;
 
 queue Queue();
@@ -52,13 +57,17 @@ queue Queue();
 
 queuenode *createQueueNode(int val);
 
-void enqueue(struct queue *q, int val);
+int _peek(struct queue* q);
 
-void dequeue(struct queue *q);
+void _enqueue(struct queue *q, int val);
 
-void printQueue(struct queue *q);
+void _dequeue(struct queue *q);
 
-void freeQueue(struct queue *q);
+void _printQueue(struct queue *q);
+
+bool _isEmpty(struct queue *q)
+
+void _freeQueue(struct queue *q);
 
 #endif
 
