@@ -17,10 +17,15 @@ queuenode *createQueueNode(int val)
     return qn;
 }
 
-void enqueue(struct queue *q, int val)
+int _peek(struct queue* q)
+{
+    return q->front->data;
+}
+
+void _enqueue(struct queue *q, int val)
 {
     queuenode *qn = createQueueNode(val);
-    if (q->len == 0)
+    if (q->isEmpty(q->self))
     {
         q->rear = qn;
     }
@@ -32,9 +37,9 @@ void enqueue(struct queue *q, int val)
     q->len++;
 }
 
-void dequeue(struct queue *q)
+void _dequeue(struct queue *q)
 {
-    if (q->len == 0)
+    if (q->isEmpty(q->self))
     {
         return;
     }
@@ -45,7 +50,7 @@ void dequeue(struct queue *q)
     free(uwu);
 }
 
-void printQueue(struct queue *q)
+void _printQueue(struct queue *q)
 {
     queuenode *temp = q->front;
     while (temp != NULL)
@@ -56,7 +61,12 @@ void printQueue(struct queue *q)
     printf("\n");
 }
 
-void freeQueue(struct queue *q)
+bool _isEmpty(struct queue *q)
+{
+    return q->len == 0;
+}
+
+void _freeQueue(struct queue *q)
 {
     while (q->front != q->rear)
     {
@@ -81,10 +91,11 @@ queue Queue()
 
     q->len = 0;
 
-    q->enqueue = enqueue;
-    q->dequeue = dequeue;
-    q->print = printQueue;
-    q->free = freeQueue;
+    q->enqueue = _enqueue;
+    q->dequeue = _dequeue;
+    q->print = _printQueue;
+    q->isEmpty = _isEmpty;
+    q->free = _freeQueue;
 
     return *q;
 }
