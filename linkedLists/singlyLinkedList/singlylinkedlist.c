@@ -8,7 +8,6 @@ node *createNode(int val)
 
     if (!n)
     {
-        printf("Couldnt Allocate memory for new node\n");
         return NULL;
     }
     n->data = val;
