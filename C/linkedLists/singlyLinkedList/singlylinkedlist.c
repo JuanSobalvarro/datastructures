@@ -34,23 +34,16 @@ void __insert(struct singlyLinkedList* ll, int val)
     ll->len++;
 }
 
-void __delete(struct singlyLinkedList* ll)
+void __deleteHead(struct singlyLinkedList* ll)
 {
-    if (ll->len == 0)
+    if (!ll->head)
     {
         return;
     }
 
-    node* temp1 = ll->head;
-    node* temp2 = temp1;
-    while (temp1->next != NULL)
-    {
-        temp2 = temp1;
-        temp1 = temp1->next;
-    }
-    temp2->next = NULL;
-    free(temp1);
-    ll->len--;
+    node* temp = ll->head;
+    ll->head = ll->head->next;
+    free(temp);
 }
 
 void __insertat(struct singlyLinkedList *ll, int val, int pos)
@@ -132,21 +125,13 @@ void __print(struct singlyLinkedList *ll)
     printf("\n");
 }   
 
-void freell(struct singlyLinkedList *ll)
+void __freell(struct singlyLinkedList *ll)
 {
-    if (ll->head != NULL)
+    while(ll->len != 0)
     {
-        free(ll->head);
-        free(ll);
-        return;
+        __deleteHead(ll);
     }
-    while (ll->head->next != NULL)
-    {
-        node *temp = ll->head;
-        ll->head = ll->head->next;
-        free(temp);
-    }
-    free(ll);
+    free(ll->self);
 }
 
 singlyLinkedList createSinglyLinkedList()
@@ -159,7 +144,7 @@ singlyLinkedList createSinglyLinkedList()
     ll->len = 0;
 
     ll->insert = __insert;
-    ll->delete = __delete;
+    ll->delete = __deleteHead;
     ll->insertAt = __insertat;
     ll->deleteAt = __deleteat;
     ll->print = __print;

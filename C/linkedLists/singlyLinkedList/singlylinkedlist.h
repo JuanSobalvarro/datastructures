@@ -56,7 +56,7 @@ node *createNode(int val);
 
 void __insert(struct singlyLinkedList* ll, int val);
 
-void __delete(struct singlyLinkedList* ll);
+void __deleteHead(struct singlyLinkedList* ll);
 
 void __insertat(struct singlyLinkedList *ll, int val, int pos);
 
