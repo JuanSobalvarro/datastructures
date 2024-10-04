@@ -134,17 +134,19 @@ void print(struct singlyLinkedList *ll)
 
 void freell(struct singlyLinkedList *ll)
 {
+    if (ll->head != NULL)
+    {
+        free(ll->head);
+        free(ll);
+        return;
+    }
     while (ll->head->next != NULL)
     {
         node *temp = ll->head;
         ll->head = ll->head->next;
         free(temp);
     }
-    if (ll->head != NULL)
-    {
-        free(ll->head);
-    }
-    free(ll->self);
+    free(ll);
 }
 
 singlyLinkedList createSinglyLinkedList()
