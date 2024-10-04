@@ -7,6 +7,7 @@ void test_create_list() {
     ll.print(ll.self);
     assert(ll.head == NULL);
     assert(ll.len == 0);
+    ll.free(ll.self);
     printf("test_create_list passed!\n");
 }
 
@@ -16,6 +17,7 @@ void test_insert() {
     ll.print(ll.self);
     assert(ll.len == 1);
     assert(ll.head->data == 10);
+    ll.free(ll.self);
     printf("test_insert passed!\n");
 }
 
@@ -26,6 +28,7 @@ void test_delete() {
     ll.print(ll.self);
     assert(ll.head == NULL);
     assert(ll.len == 0);
+    ll.free(ll.self);
     printf("test_delete passed!\n");
 }
 
@@ -39,6 +42,7 @@ void test_insertAt() {
     assert(ll.head->data == 30);
     assert(ll.head->next->data == 50);
     assert(ll.head->next->next->data == 40);
+    ll.free(ll.self);
     printf("test_insertAt passed!\n");
 }
 
@@ -52,6 +56,7 @@ void test_deleteAt() {
     assert(ll.len == 2);
     assert(ll.head->data == 60);
     assert(ll.head->next->data == 80);
+    ll.free(ll.self);
     printf("test_deleteAt passed!\n");
 }
 
