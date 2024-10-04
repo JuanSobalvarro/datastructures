@@ -140,7 +140,10 @@ void freell(struct singlyLinkedList *ll)
         ll->head = ll->head->next;
         free(temp);
     }
-    free(ll->head);
+    if (ll->head != NULL)
+    {
+        free(ll->head);
+    }
     free(ll->self);
 }
 

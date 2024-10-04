@@ -7,7 +7,7 @@ void test_create_list() {
     ll.print(ll.self);
     assert(ll.head == NULL);
     assert(ll.len == 0);
-    ll.free(&ll);
+    ll.free(ll.self);
     printf("test_create_list passed!\n");
 }
 
