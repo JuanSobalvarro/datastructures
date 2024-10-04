@@ -16,7 +16,7 @@ node *createNode(int val)
     return n;
 }
 
-void insert(struct singlyLinkedList* ll, int val)
+void __insert(struct singlyLinkedList* ll, int val)
 {
     if (ll->len == 0)
     {
@@ -34,7 +34,7 @@ void insert(struct singlyLinkedList* ll, int val)
     ll->len++;
 }
 
-void delete(struct singlyLinkedList* ll)
+void __delete(struct singlyLinkedList* ll)
 {
     if (ll->len == 0)
     {
@@ -53,7 +53,7 @@ void delete(struct singlyLinkedList* ll)
     ll->len--;
 }
 
-void insertat(struct singlyLinkedList *ll, int val, int pos)
+void __insertat(struct singlyLinkedList *ll, int val, int pos)
 {
     if (pos < 0)
     {
@@ -86,7 +86,7 @@ void insertat(struct singlyLinkedList *ll, int val, int pos)
     ll->len++;
 }
 
-void deleteat(struct singlyLinkedList *ll, int pos)
+void __deleteat(struct singlyLinkedList *ll, int pos)
 {
     if (pos < 0)
     {
@@ -121,7 +121,7 @@ void deleteat(struct singlyLinkedList *ll, int pos)
     ll->len--;
 }
 
-void print(struct singlyLinkedList *ll)
+void __print(struct singlyLinkedList *ll)
 {
     node *temp = ll->head;
     while (temp != NULL)
@@ -158,12 +158,12 @@ singlyLinkedList createSinglyLinkedList()
     ll->head = NULL;
     ll->len = 0;
 
-    ll->insert = insert;
-    ll->delete = delete;
-    ll->insertAt = insertat;
-    ll->deleteAt = deleteat;
-    ll->print = print;
-    ll->free = freell;
+    ll->insert = __insert;
+    ll->delete = __delete;
+    ll->insertAt = __insertat;
+    ll->deleteAt = __deleteat;
+    ll->print = __print;
+    ll->free = __freell;
 
     return *ll;
 }

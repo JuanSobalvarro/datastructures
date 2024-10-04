@@ -54,17 +54,17 @@ singlyLinkedList createSinglyLinkedList();
 
 node *createNode(int val);
 
-void insert(struct singlyLinkedList* ll, int val);
+void __insert(struct singlyLinkedList* ll, int val);
 
-void delete(struct singlyLinkedList* ll);
+void __delete(struct singlyLinkedList* ll);
 
-void insertat(struct singlyLinkedList *ll, int val, int pos);
+void __insertat(struct singlyLinkedList *ll, int val, int pos);
 
-void deleteat(struct singlyLinkedList *ll, int pos);
+void __deleteat(struct singlyLinkedList *ll, int pos);
 
-void print(struct singlyLinkedList *ll);
+void __print(struct singlyLinkedList *ll);
 
-void freell(struct singlyLinkedList *ll);
+void __freell(struct singlyLinkedList *ll);
 
 #endif
 
