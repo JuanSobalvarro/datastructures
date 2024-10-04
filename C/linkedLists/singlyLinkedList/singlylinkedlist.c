@@ -16,6 +16,43 @@ node *createNode(int val)
     return n;
 }
 
+void insert(struct singlyLinkedList* ll, int val)
+{
+    if (ll->len == 0)
+    {
+        ll->head = createNode(val);
+        ll->len++;
+    }
+
+    node* temp = ll->head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
+    temp->next = createNode(val);
+    ll->len++;
+}
+
+void delete(struct singlyLinkedList* ll)
+{
+    if (ll->len == 0)
+    {
+        return;
+    }
+
+    node* temp1 = ll->head;
+    node* temp2 = temp1;
+    while (temp1->next != NULL)
+    {
+        temp2 = temp1;
+        temp1 = temp1->next;
+    }
+    temp2->next = NULL;
+    free(temp1);
+    ll->len--;
+}
+
 void insertat(struct singlyLinkedList *ll, int val, int pos)
 {
     if (pos < 0)
@@ -116,6 +153,8 @@ singlyLinkedList createSinglyLinkedList()
     ll->head = NULL;
     ll->len = 0;
 
+    ll->insert = insert;
+    ll->delete = delete;
     ll->insertAt = insertat;
     ll->deleteAt = deleteat;
     ll->print = print;

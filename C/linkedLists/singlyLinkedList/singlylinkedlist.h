@@ -38,6 +38,9 @@ typedef struct singlyLinkedList
     struct node *head;
     int len;
 
+    void (*insert)(struct singlyLinkedList* self, int value);
+    void (*delete)(struct singlyLinkedList* self);
+
     void (*insertAt)(struct singlyLinkedList* self, int value, int index);
     void (*deleteAt)(struct singlyLinkedList* self, int index);
     void (*print)(struct singlyLinkedList* self);
@@ -50,6 +53,10 @@ singlyLinkedList createSinglyLinkedList();
 #ifdef _PRIVATE_
 
 node *createNode(int val);
+
+void insert(struct singlyLinkedList* ll, int val);
+
+void delete(struct singlyLinkedList* ll);
 
 void insertat(struct singlyLinkedList *ll, int val, int pos);
 
