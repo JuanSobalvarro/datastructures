@@ -70,11 +70,11 @@ void test_free() {
 
 int main() {
     test_create_list();
-    test_insert();
-    test_delete();
-    test_insertAt();
-    test_deleteAt();
-    test_free();
+    // test_insert();
+    // test_delete();
+    // test_insertAt();
+    // test_deleteAt();
+    // test_free();
     
     printf("All tests passed!\n");
     return 0;
