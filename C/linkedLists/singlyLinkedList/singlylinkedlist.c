@@ -22,6 +22,7 @@ void __insert(struct singlyLinkedList* ll, int val)
     {
         ll->head = createNode(val);
         ll->len++;
+        return;
     }
 
     node* temp = ll->head;
@@ -116,6 +117,7 @@ void __deleteat(struct singlyLinkedList *ll, int pos)
 
 void __print(struct singlyLinkedList *ll)
 {
+    printf("List with len %d:\n", ll->len);
     node *temp = ll->head;
     while (temp != NULL)
     {
